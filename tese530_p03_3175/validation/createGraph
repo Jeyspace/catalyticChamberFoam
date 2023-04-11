@@ -1,0 +1,173 @@
+#!/bin/sh
+
+if ! which gnuplot > /dev/null 2>&1
+then
+    echo "gnuplot not found - skipping graph creation" >&2
+    exit 1
+fi
+
+gnuplot<<EOF
+    set terminal postscript eps color enhanced "Helveicta,20"
+    set output "OF_vs_CHEMKINII.eps"
+    set xlabel "Time [s]" font "Helveicta,24"
+    set ylabel "Temperature [K]" font "Helveicta,24"
+    set grid
+    set key right bottom
+    set xrange [0:3]
+    set yrange [250:1900]
+    set ytic 250
+    plot \
+        "../chemFoam.out1" u 1:2 t "TemperatureC1" with lines lt 1 lc 1, \
+        "../chemFoam.out1" u 1:8 t "TemperatureI1" with lines lt 1 lc 2, \
+        "../chemFoam.out1" u 1:15 t "TemperatureS1" with lines lt 1 lc 6, \
+        "../chemFoam.out2" u 1:2 t "TemperatureC2" with lines lt 1 lc 7, \
+        "../chemFoam.out2" u 1:8 t "TemperatureI2" with lines lt 1 lc 8, \
+        "../chemFoam.out2" u 1:15 t "TemperatureS2" with lines lt 1 lc 12
+EOF
+
+gnuplot<<EOF
+    set terminal postscript eps color enhanced "Helveicta,20"
+    set output "OF_vs_CHEMKINIII.eps"
+    set xlabel "Time [s]" font "Helveicta,24"
+    set ylabel "Pressure [Pa]" font "Helveicta,24"
+    set grid
+    set key left top
+    set xrange [0:3]
+    set yrange [500000:1500000]
+    set ytic 100000
+    plot \
+        "../chemFoam.out1" u 1:9 t "Pressure1" with lines lt 1 lc 1, \
+        "../chemFoam.out2" u 1:9 t "Pressure2" with lines lt 1 lc 2
+EOF
+
+gnuplot<<EOF
+    set terminal postscript eps color enhanced "Helveicta,20"
+    set output "OF_vs_CHEMKINIV.eps"
+    set xlabel "Time [s]" font "Helveicta,24"
+    set ylabel "Mass fraction" font "Helveicta,24"
+    set grid
+    set key right top
+    set xrange [0:3]
+    set yrange [0:1]
+    set ytic 0.1
+    plot \
+	"../chemFoam.out1" u 1:3 t "N2H4C1" with lines lt 1 lc 1, \
+	"../chemFoam.out1" u 1:4 t "H2C1" with lines lt 1 lc 2, \
+	"../chemFoam.out1" u 1:5 t "NH3C1" with lines lt 1 lc 3, \
+	"../chemFoam.out1" u 1:6 t "N2C1" with lines lt 1 lc 4, \
+	"../chemFoam.out1" u 1:7 t "AIRC1" with lines lt 1 lc 5, \
+	"../chemFoam.out2" u 1:3 t "N2H4C2" with lines lt 1 lc 26, \
+	"../chemFoam.out2" u 1:4 t "H2C2" with lines lt 1 lc 8, \
+	"../chemFoam.out2" u 1:5 t "NH3C2" with lines lt 1 lc 7, \
+	"../chemFoam.out2" u 1:6 t "N2C2" with lines lt 1 lc 22, \
+	"../chemFoam.out2" u 1:7 t "AIRC2" with lines lt 1 lc 11
+EOF
+
+gnuplot<<EOF
+    set terminal postscript eps color enhanced "Helveicta,20"
+    set output "OF_vs_CHEMKINV.eps"
+    set xlabel "Time [s]" font         "Helveicta,24"
+    set ylabel "Mass fraction" font "Helveicta,24"
+    set grid
+    set key right top
+    set xrange [0:3]
+    set yrange [0:1]
+    set ytic 0.1
+    plot \
+        "../chemFoam.out1" u 1:10 t "N2H4I1" with lines lt 3 lc 1, \
+	"../chemFoam.out1" u 1:11 t "H2I1" with lines lt 3 lc 2, \
+	"../chemFoam.out1" u 1:12 t "NH3I1" with lines lt 3 lc 3, \
+	"../chemFoam.out1" u 1:13 t "N2I1" with lines lt 3 lc 4, \
+        "../chemFoam.out1" u 1:14 t "AIRI1" with lines lt 3 lc 5,\
+        "../chemFoam.out2" u 1:10 t "N2H4I2" with lines lt 3 lc 26, \
+	"../chemFoam.out2" u 1:11 t "H2I2" with lines lt 3 lc 8, \
+	"../chemFoam.out2" u 1:12 t "NH3I2" with lines lt 3 lc 7, \
+	"../chemFoam.out2" u 1:13 t "N2I2" with lines lt   3 lc 22, \
+        "../chemFoam.out2" u 1:14 t "AIRI2" with lines lt 3 lc 11
+EOF
+
+gnuplot<<EOF
+    set terminal postscript eps color enhanced "Helveicta,20"
+    set output "OF_vs_CHEMKINVI.eps"
+    set xlabel "Time [s]" font         "Helveicta,24"
+    set ylabel "Effective diffusion coefficient [m2/s]" font "Helveicta,24"
+    set grid
+    set key right top
+    set xrange [0:3]
+    set yrange [0:0.000005]
+    set ytic 0.0000005
+    plot \
+        "../chemFoam.out1" u 1:16 t "DN2H4C1" with lines lt 3 lc 1, \
+	"../chemFoam.out1" u 1:17 t "DH2C1" with lines lt 3 lc 2, \
+	"../chemFoam.out1" u 1:18 t "DNH3C1" with lines lt 3 lc 3, \
+	"../chemFoam.out1" u 1:19 t "DN2C1" with lines lt 3 lc 4, \
+        "../chemFoam.out2" u 1:16 t "DN2H4C2" with lines lt 3 lc 26, \
+	"../chemFoam.out2" u 1:17 t "DH2C2" with lines lt 3 lc 8, \
+	"../chemFoam.out2" u 1:18 t "DNH3C2" with lines lt 3 lc 7, \
+	"../chemFoam.out2" u 1:19 t "DN2C2" with lines lt   3 lc 22, \
+	"../chemFoam.out1" u 1:26 t "D2s1" with lines lt 3 lc 15, \
+	"../chemFoam.out2" u 1:26 t "D2s2" with lines lt 3 lc 15
+EOF
+
+gnuplot<<EOF
+    set terminal postscript eps color enhanced "Helveicta,20"
+    set output "OF_vs_CHEMKINVII.eps"
+    set xlabel "Time [s]" font         "Helveicta,24"
+    set ylabel "Effective diffusion coefficient [m2/s]" font "Helveicta,24"
+    set grid
+    set key right top
+    set xrange [0:3]
+    set yrange [0:0.00005]
+    set ytic 0.00001
+    plot \
+        "../chemFoam.out1" u 1:21 t "DN2H4I1" with lines lt 3 lc 1, \
+	"../chemFoam.out1" u 1:22 t "DH2I1" with lines lt 3 lc 2, \
+	"../chemFoam.out1" u 1:23 t "DNH3I1" with lines lt 3 lc 3, \
+	"../chemFoam.out1" u 1:24 t "DN2I1" with lines lt 3 lc 4, \
+        "../chemFoam.out2" u 1:21 t "DN2H4I2" with lines lt 3 lc 5, \
+	"../chemFoam.out2" u 1:22 t "DH2I2" with lines lt 3 lc 8, \
+	"../chemFoam.out2" u 1:23 t "DNH3I2" with lines lt 3 lc 7, \
+	"../chemFoam.out2" u 1:24 t "DN2I2" with lines lt 3 lc 22, \
+	"../chemFoam.out1" u 1:27 t "D1s1" with lines lt 3 lc 17, \
+	"../chemFoam.out2" u 1:27 t "D1s2" with lines lt 3 lc 26
+EOF
+
+gnuplot<<EOF
+    set terminal postscript eps color enhanced "Helveicta,20"
+    set output "OF_vs_T788K.eps"
+    set xlabel "Time [s]" font "Helveicta,24"
+    set ylabel "Temperature [K]" font "Helveicta,24"
+    set grid
+    set key right bottom 
+    set xrange [0:3]
+    set yrange [250:1500]
+    set ytic 250
+    plot \
+        "../T788K.dat" u 1:2 t "Kesten simulation          " with lines lt 4 lc 8, \
+        "../T788K.dat" u 1:3 t "Kesten experimental     " with lines lt 4 lc 7, \
+        "../chemFoam.out1" u 1:8 t "Present work(p0.4dpa2)" with lines lt 1 lc 3
+EOF
+
+gnuplot<<EOF
+    set terminal postscript eps color enhanced "Helveicta,20"
+    set output "OF_vs_CHEMKINVIII.eps"
+    set xlabel "Time [s]" font         "Helveicta,24"
+    set ylabel "Mass transfer" font "Helveicta,24"
+    set grid
+    set key right top
+    set xrange [0:3]
+    set yrange [-350:350]
+    set ytic 50
+    plot \
+        "../chemFoam.out1" u 1:28 t "MTN2H4I1" with lines lt 3 lc 1, \
+	"../chemFoam.out1" u 1:29 t "MTH2I1" with lines lt 3 lc 2, \
+	"../chemFoam.out1" u 1:30 t "MTNH3I1" with lines lt 3 lc 3, \
+	"../chemFoam.out1" u 1:31 t "MTN2I1" with lines lt 3 lc 4, \
+        "../chemFoam.out2" u 1:28 t "MTN2H4I2" with lines lt 3 lc 5, \
+	"../chemFoam.out2" u 1:29 t "MTH2I2" with lines lt 3 lc 8, \
+	"../chemFoam.out2" u 1:30 t "MTNH3I2" with lines lt 3 lc 7, \
+	"../chemFoam.out2" u 1:31 t "MTN2I2" with lines lt 3 lc 22
+EOF
+
+#------------------------------------------------------------------------------
+

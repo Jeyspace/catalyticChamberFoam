@@ -1,0 +1,75 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : 5.x-68e8507efb72
+Exec   : blockMesh
+Date   : Sep 05 2019
+Time   : 20:57:08
+Host   : "aluno-HP-EliteDesk-800-G1-SFF"
+PID    : 16016
+I/O    : uncollated
+Case   : /home/aluno/OpenFOAM/aluno-5.0/doutorado2018/ACompTese/tese530_p03_3175
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Creating block mesh from
+    "/home/aluno/OpenFOAM/aluno-5.0/doutorado2018/ACompTese/tese530_p03_3175/system/blockMeshDict"
+Creating block edges
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 0
+		Number of boundary faces : 6
+		Number of defined boundary faces : 6
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 0.01
+    Block 0 cell size :
+        i : 0.0009144 .. 0.0009144
+        j : 0.0015246 .. 0.0015246
+        k : 0 .. 0
+
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (0 0 -0.0008568) (0.09144 0.03048 0.0008568)
+  nPoints: 4141
+  nCells: 2000
+  nFaces: 8020
+  nInternalFaces: 3880
+----------------
+Patches
+----------------
+  patch 0 (start: 3880 size: 20) name: outlet
+  patch 1 (start: 3900 size: 20) name: inlet
+  patch 2 (start: 3920 size: 100) name: wall
+  patch 3 (start: 4020 size: 2000) name: wedge1
+  patch 4 (start: 6020 size: 2000) name: wedge2
+  patch 5 (start: 8020 size: 0) name: eixo
+
+End
+

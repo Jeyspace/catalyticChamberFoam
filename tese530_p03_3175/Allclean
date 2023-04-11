@@ -1,0 +1,19 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+# Source tutorial clean functions
+. $WM_PROJECT_DIR/bin/tools/CleanFunctions
+
+cleanCase
+
+rm -rf 0/Ydefault.catalyst 
+
+rm -rf chemFoam.out1 chemFoam.out2 validation/OF_vs_CHEMKINII.eps validation/chemkinII validation/OF_vs_T788K.eps
+rm -rf chemFoam.out1 chemFoam.out2 validation/OF_vs_CHEMKINIII.eps validation/chemkinIII
+rm -rf chemFoam.out1 chemFoam.out2 validation/OF_vs_CHEMKINIV.eps validation/chemkinIV
+rm -rf chemFoam.out1 chemFoam.out2 validation/OF_vs_CHEMKINV.eps validation/chemkinV
+rm -rf chemFoam.out1 chemFoam.out2 validation/OF_vs_CHEMKINVI.eps validation/chemkinVI
+rm -rf chemFoam.out1 chemFoam.out2 validation/OF_vs_CHEMKINVII.eps validation/chemkinVII
+rm -rf chemFoam.out1 chemFoam.out2 validation/OF_vs_CHEMKINVIII.eps validation/chemkinVIII
+
+#------------------------------------------------------------------------------

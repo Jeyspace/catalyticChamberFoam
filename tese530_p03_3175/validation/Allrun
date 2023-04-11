@@ -1,0 +1,27 @@
+#!/bin/sh
+
+cd ${0%/*} || exit 1    # Run from this directory
+
+# Extract Chemkin II data into a friendlier format
+echo "# Time [s]    TemperatureC1 [K]	TemperatureI1 [K]     TemperatureS1 [K]	TemperatureC2 [K]	TemperatureI2 [K]     TemperatureS2 [K]" > chemkinII
+
+# Extract Chemkin III data into a friendlier format
+echo "# Time [s]    Pressure1 [Pa]	Pressure2 [Pa]" > chemkinIII
+
+# Extract Chemkin IV data into a friendlier format
+echo "# Time [s]    Y0C1 Y1C1 Y2C1 Y3C1 Y4C1 Y0C2 Y1C2 Y2C2 Y3C2 Y4C2" > chemkinIV
+
+# Extract Chemkin IV data into a friendlier format
+echo "# Time [s]    Y0I1 Y1I1 Y2I1 Y3I1 Y4I1 Y0I2 Y1I2 Y2I2 Y3I2 Y4I2" > chemkinV
+
+# Extract Chemkin IV data into a friendlier format
+echo "# Time [s]    D0C1 D1C1 D2C1 D3C1 D4C1 D0C2 D1C2 D2C2 D3C2 D4C2 D2s" > chemkinVI
+
+# Extract Chemkin IV data into a friendlier format
+echo "# Time [s]    D0I1 D1I1 D2I1 D3I1 D4I1 D0I2 D1I2 D2I2 D3I2 D4I2 D1s" > chemkinVII
+
+./createGraph
+
+#------------------------------------------------------------------------------
+
+

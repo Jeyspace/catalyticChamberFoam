@@ -1,0 +1,30 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  5.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      porousProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+phis		0.75;
+porosityP	0.336;
+dpore	dpore [0 1 0 0 0 0 0] 1E-6;
+dpa	dpa [0 1 0 0 0 0 0] 3.175E-3;
+dc	dc [0 1 0 0 0 0 0] 0.06096;
+rhoC	rhoC [1 -3 0 0 0 0 0] 2186.7124;
+cpC	cpC [0 2 -2 -1 0 0 0] 923;
+kC	kC [1 1 -3 -1 0 0 0] 0.0769;
+//experimental(necessary porosityb value) experimental or calculated;
+bedPorosity	experimental;
+porosityb	0.336;
+
+// ************************************************************************* //
